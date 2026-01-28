@@ -22,6 +22,13 @@ export class ListFiche {
         deadline: new Date(),
         description: 'Description de la fiche',
       },
+      {
+        id: 2,
+        title: 'Titre de la fiche',
+        status: 'En cours',
+        deadline: new Date(),
+        description: 'Description de la fiche',
+      }
     ]);
   }
 

@@ -1,10 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --color-primary: #2563eb;
-  --color-secondary: #ef4444;
+  /* Colors */
+  --bg-dark: oklch(0.1 0 180);
+  --bg: oklch(0.15 0 180);
+  --bg-light: oklch(0.2 0 180);
+  --text: oklch(0.96 0 180);
+  --text-muted: oklch(0.76 0 180);
+  --highlight: oklch(0.5 0 180);
+  --border: oklch(0.4 0 180);
+  --border-muted: oklch(0.3 0 180);
+  --primary: oklch(0.76 0.1 180);
+  --secondary: oklch(0.76 0.1 0);
+  --danger: oklch(0.7 0.05 30);
+  --warning: oklch(0.7 0.05 100);
+  --success: oklch(0.7 0.05 160);
+  --info: oklch(0.7 0.05 260);
 
-  --bg-primary: #f9fafb;
-  --bg-secondary: #ffffff;
+  /* Divers */
+  --border-radius: 10px
 }
 
 html {
@@ -12,5 +25,12 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-dark);
+  color: var(--text);
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
