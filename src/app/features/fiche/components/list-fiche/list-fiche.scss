@@ -1,4 +1,101 @@
 :host {
+  display: block;
+  padding: var(--spacing-lg);
+  min-height: calc(100vh - 40px); // Ajuste selon ton header si présent
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+
+  // Tablette : 2 colonnes ou défilement horizontal
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  // Mobile : 1 colonne
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  background-color: var(--bg);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--border);
+  }
+
+  h2 {
+    color: var(--primary);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--bg-light);
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+
+    // Optionnel : petit badge discret pour compter les fiches
+    &::after {
+      content: ''; // Tu pourrais lier ici le nombre d'items
+      font-size: var(--font-size-xs);
+      color: var(--text-muted);
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    overflow-y: auto;
+    padding-right: var(--spacing-xs); // Espace pour la scrollbar
+
+    /* Custom Scrollbar pour rester dans le thème dark */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--border-muted);
+      border-radius: 10px;
+      &:hover {
+        background: var(--highlight);
+      }
+    }
+  }
+}
+
+// Style pour l'élément app-fiche à l'intérieur de la liste
+app-fiche {
+  display: block;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-muted);
+  border-radius: calc(var(--border-radius) / 2);
+  padding: var(--spacing-sm);
+  cursor: grab;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+
+  &:hover {
+    border-color: var(--primary);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
 }

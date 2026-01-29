@@ -1,6 +1,7 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 
 import { FicheInterface } from '../../interfaces/fiche.interface';
+import { FicheService } from '../../services/fiche.service';
 
 @Component({
   selector: 'app-fiche',
@@ -9,6 +10,8 @@ import { FicheInterface } from '../../interfaces/fiche.interface';
   styleUrl: './fiche.scss',
 })
 export class Fiche {
+  ficheService = inject(FicheService);
+
   fiche = input<FicheInterface>({
     id: 0,
     title: '',
@@ -16,6 +19,4 @@ export class Fiche {
     deadline: new Date(),
     description: '',
   });
-
-  
 }

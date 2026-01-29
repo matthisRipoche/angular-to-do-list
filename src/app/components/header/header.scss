@@ -1,4 +1,14 @@
 :host {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background-color: var(--bg-light);
+    color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+  }
 }

@@ -2,5 +2,7 @@
 <p>{{fiche().deadline.toLocaleDateString()}}</p>
 <p>{{fiche().status}}</p>
 <p>{{fiche().description}}</p>
-<button>Supprimer</button>
-<button>Modifier</button>
+<div class="btns-container">
+    <button class="btn-fiche" (click)="ficheService.deleteFiche(fiche().id)">Supprimer</button>
+    <button class="btn-fiche">Modifier</button>
+</div>

@@ -4,4 +4,23 @@
   padding: 20px;
   border-radius: var(--border-radius);
   border: 1px solid var(--border);
+
+  .btns-container {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  .btn-fiche {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+
+    &:hover {
+      background-color: var(--secondary);
+    }
+  }
 }
