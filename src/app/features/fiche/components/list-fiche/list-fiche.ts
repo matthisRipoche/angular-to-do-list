@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
-import { FicheInterface } from '../../interfaces/fiche.interface';
 import { Fiche } from '../fiche/fiche';
+import { FicheService } from '../../services/fiche.service';
 import { signal } from '@angular/core';
 
 @Component({
@@ -11,25 +11,6 @@ import { signal } from '@angular/core';
   styleUrl: './list-fiche.scss',
 })
 export class ListFiche {
-  listeFiche = signal<FicheInterface[]>([]);
-
-  constructor() {
-    this.listeFiche.set([
-      {
-        id: 1,
-        title: 'Titre de la fiche',
-        status: 'En cours',
-        deadline: new Date(),
-        description: 'Description de la fiche',
-      },
-      {
-        id: 2,
-        title: 'Titre de la fiche',
-        status: 'En cours',
-        deadline: new Date(),
-        description: 'Description de la fiche',
-      }
-    ]);
-  }
-
+  private ficheService = inject(FicheService);
+  listeFiche = this.ficheService.listeFiche;
 }

@@ -1,0 +1,22 @@
+<form [formGroup]="ficheForm" (ngSubmit)="onSubmit()">
+    <h2>Création d'une fiche</h2>
+    
+    <input type="text" 
+           formControlName="title" 
+           placeholder="Titre de la fiche">
+    
+    <input type="date" 
+           formControlName="deadline" 
+           placeholder="Date de la fiche">
+    
+    <select formControlName="status">
+        <option value="Todo">Todo</option>
+        <option value="En cours">En cours</option>
+        <option value="Done">Done</option>
+    </select>
+    
+    <textarea formControlName="description" 
+              placeholder="Description de la fiche"></textarea>
+    
+    <button type="submit" [disabled]="ficheForm.invalid">Créer</button>
+</form>
