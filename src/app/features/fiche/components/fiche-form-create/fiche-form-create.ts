@@ -18,7 +18,6 @@ export class FicheFormCreate {
 
   private router = inject(Router);
 
-  // On définit le type du formulaire basé sur l'interface (moins l'ID)
   ficheForm = this.fb.group({
     title: ['', [Validators.required]],
     deadline: [new Date().toISOString().split('T')[0]],
@@ -27,13 +26,11 @@ export class FicheFormCreate {
   });
 
   onSubmit() {
-    // Ici, rawValue correspond exactement à FicheInterface sans l'ID
     const rawValue = this.ficheForm.getRawValue();
 
-    // On ajoute l'ID au moment de l'envoi au service
     const nouvelleFiche: FicheInterface = {
       ...rawValue,
-      id: Date.now(), // Génération temporaire
+      id: Date.now(),
       deadline: new Date(rawValue.deadline)
     };
 

@@ -28,7 +28,6 @@
   padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
-  max-height: 85vh;
   transition: border-color 0.2s ease;
 
   &:hover {
@@ -46,9 +45,8 @@
     justify-content: space-between;
     align-items: center;
 
-    // Optionnel : petit badge discret pour compter les fiches
     &::after {
-      content: ''; // Tu pourrais lier ici le nombre d'items
+      content: '';
       font-size: var(--font-size-xs);
       color: var(--text-muted);
     }
@@ -65,13 +63,16 @@
     &::-webkit-scrollbar {
       width: 6px;
     }
+
     &::-webkit-scrollbar-track {
       background: var(--bg-dark);
       border-radius: 10px;
     }
+
     &::-webkit-scrollbar-thumb {
       background: var(--border-muted);
       border-radius: 10px;
+
       &:hover {
         background: var(--highlight);
       }

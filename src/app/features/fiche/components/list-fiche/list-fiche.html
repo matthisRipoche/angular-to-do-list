@@ -3,7 +3,7 @@
     <h2>À Faire</h2>
     <div class="list">
       @for(fiche of fichesToDo(); track fiche.id) {
-        <app-fiche [fiche]="fiche"></app-fiche>
+      <app-fiche [fiche]="fiche"></app-fiche>
       }
     </div>
   </section>
@@ -12,7 +12,7 @@
     <h2>En Cours</h2>
     <div class="list">
       @for(fiche of fichesInProgress(); track fiche.id) {
-        <app-fiche [fiche]="fiche"></app-fiche>
+      <app-fiche [fiche]="fiche"></app-fiche>
       }
     </div>
   </section>
@@ -21,7 +21,7 @@
     <h2>Terminé</h2>
     <div class="list">
       @for(fiche of fichesDone(); track fiche.id) {
-        <app-fiche [fiche]="fiche"></app-fiche>
+      <app-fiche [fiche]="fiche"></app-fiche>
       }
     </div>
   </section>

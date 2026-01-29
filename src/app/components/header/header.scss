@@ -1,11 +1,12 @@
 :host {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   button {
     background-color: var(--bg-light);
-    color: var(--white);
-    border: 1px solid var(--border);
+    color: var(--primary);
+    border: 1px solid var(--primary);
     border-radius: var(--border-radius);
     padding: var(--spacing-sm);
     cursor: pointer;
