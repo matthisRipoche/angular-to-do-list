@@ -1,5 +1,4 @@
 import { Component, inject, computed } from '@angular/core';
-import { CdkDrag } from '@angular/cdk/drag-drop';
 
 import { Fiche } from '../fiche/fiche';
 import { FicheService } from '../../services/fiche.service';
@@ -7,7 +6,7 @@ import { signal } from '@angular/core';
 
 @Component({
   selector: 'app-list-fiche',
-  imports: [Fiche, CdkDrag],
+  imports: [Fiche],
   templateUrl: './list-fiche.html',
   styleUrl: './list-fiche.scss',
 })
