@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { FicheInterface } from '../interfaces/fiche.interface';
+import { FicheInterface, FicheStatus, CreateFicheDto } from '../interfaces/fiche.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +15,24 @@ export class FicheService {
     }
   ]);
 
+  isModalOpen = signal(false);
+
   listeFiche = this._listFiche.asReadonly();
 
-  constructor(){}
+  constructor() { }
 
-  addFiche(fiche: FicheInterface){
+  createFiche(dto: CreateFicheDto) {
+    const nouvelleFiche: FicheInterface = {
+      ...dto,
+      status: dto.status || 'todo',
+      id: Date.now(),
+      deadline: new Date(dto.deadline)
+    };
+
+    this.addFiche(nouvelleFiche);
+  }
+
+  addFiche(fiche: FicheInterface) {
     this._listFiche.update((list) => [...list, fiche]);
   }
 

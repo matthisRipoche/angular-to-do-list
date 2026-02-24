@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 
-import { FicheInterface } from '../../interfaces/fiche.interface';
+import { FicheInterface, FicheStatus } from '../../interfaces/fiche.interface';
 import { FicheService } from '../../services/fiche.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class Fiche {
   fiche = input<FicheInterface>({
     id: 0,
     title: '',
-    status: '',
+    status: 'todo' as FicheStatus,
     deadline: new Date(),
     description: '',
   });

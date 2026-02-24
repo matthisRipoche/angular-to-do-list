@@ -1,9 +1,8 @@
-import { Component, signal } from '@angular/core';
-import { FicheInterface } from '../../interfaces/fiche.interface';
+import { Component, output } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { inject } from '@angular/core';
 import { FicheService } from '../../services/fiche.service';
-import { Router } from '@angular/router';
+import { FicheStatus } from '../../interfaces/fiche.interface';
 
 @Component({
   selector: 'app-fiche-form-create',
@@ -16,26 +15,24 @@ export class FicheFormCreate {
 
   private ficheService = inject(FicheService);
 
-  private router = inject(Router);
+  afterSubmit = output<void>();
 
   ficheForm = this.fb.group({
     title: ['', [Validators.required]],
     deadline: [new Date().toISOString().split('T')[0]],
-    status: ['En cours' as const],
+    status: ['todo' as FicheStatus],
     description: ['']
   });
 
   onSubmit() {
-    const rawValue = this.ficheForm.getRawValue();
+    if (this.ficheForm.invalid) return;
 
-    const nouvelleFiche: FicheInterface = {
-      ...rawValue,
-      id: Date.now(),
-      deadline: new Date(rawValue.deadline)
-    };
+    this.ficheService.createFiche(this.ficheForm.getRawValue());
 
-    this.ficheService.addFiche(nouvelleFiche);
-    this.router.navigate(['/']);
+    this.afterSubmit.emit();
+    this.ficheForm.reset({
+      deadline: new Date().toISOString().split('T')[0],
+      status: 'todo'
+    });
   }
-
 }
