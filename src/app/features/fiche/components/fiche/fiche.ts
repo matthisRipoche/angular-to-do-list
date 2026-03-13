@@ -19,4 +19,8 @@ export class Fiche {
     deadline: new Date(),
     description: '',
   });
+
+  toggleModalEdit() {
+    this.ficheService.openEditModal(this.fiche());
+  }
 }

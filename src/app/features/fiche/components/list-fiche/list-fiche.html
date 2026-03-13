@@ -1,5 +1,5 @@
 <div class="header-actions">
-  <button class="btn-create" (click)="toggleModal()">+ Nouvelle Fiche</button>
+  <button class="btn-create" (click)="toggleModalCreate()">+ Nouvelle Fiche</button>
 </div>
 
 <div class="board">
@@ -31,14 +31,26 @@
   </section>
 </div>
 
-@if (isModalOpen()) {
-<div class="modal-backdrop" (click)="toggleModal()">
+@if (isModalCreateOpen()) {
+<div class="modal-backdrop" (click)="toggleModalCreate()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="modal-header">
       <h2>Créer une fiche</h2>
-      <button class="btn-close" (click)="toggleModal()">×</button>
+      <button class="btn-close" (click)="toggleModalCreate()">×</button>
     </div>
-    <app-fiche-form-create (afterSubmit)="toggleModal()"></app-fiche-form-create>
+    <app-fiche-form-create (afterSubmit)="toggleModalCreate()"></app-fiche-form-create>
+  </div>
+</div>
+}
+
+@if (isModalEditOpen()) {
+<div class="modal-backdrop" (click)="closeEditModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Modifier une fiche</h2>
+      <button class="btn-close" (click)="closeEditModal()">×</button>
+    </div>
+    <app-fiche-form-edit [fiche]="ficheToEdit()" (afterSubmit)="closeEditModal()"></app-fiche-form-edit>
   </div>
 </div>
 }

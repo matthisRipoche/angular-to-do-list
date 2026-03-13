@@ -1,5 +1,4 @@
-<form [formGroup]="ficheFormCreate" (ngSubmit)="onSubmit()">
-    <h2>Création d'une fiche</h2>
+<form [formGroup]="ficheFormEdit" (ngSubmit)="onSubmit()">
 
     <input type="text" formControlName="title" placeholder="Titre de la fiche">
 
@@ -13,5 +12,5 @@
 
     <textarea formControlName="description" placeholder="Description de la fiche"></textarea>
 
-    <button type="submit" [disabled]="ficheFormCreate.invalid">Créer</button>
+    <button type="submit" [disabled]="ficheFormEdit.invalid">Enregistrer</button>
 </form>

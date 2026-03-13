@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { FicheInterface, FicheStatus, CreateFicheDto } from '../interfaces/fiche.interface';
+import { FicheInterface, CreateFicheDto } from '../interfaces/fiche.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,9 @@ export class FicheService {
     }
   ]);
 
-  isModalOpen = signal(false);
+  isModalCreateOpen = signal(false);
+  isModalEditOpen = signal(false);
+  ficheToEdit = signal<FicheInterface | null>(null);
 
   listeFiche = this._listFiche.asReadonly();
 
@@ -34,6 +36,26 @@ export class FicheService {
 
   addFiche(fiche: FicheInterface) {
     this._listFiche.update((list) => [...list, fiche]);
+  }
+
+  openEditModal(fiche: FicheInterface) {
+    this.ficheToEdit.set(fiche);
+    this.isModalEditOpen.set(true);
+  }
+
+  closeEditModal() {
+    this.isModalEditOpen.set(false);
+    this.ficheToEdit.set(null);
+  }
+
+  updateFiche(id: number, dto: Partial<CreateFicheDto>) {
+    this._listFiche.update((list) =>
+      list.map((fiche) =>
+        fiche.id === id
+          ? { ...fiche, ...dto, deadline: dto.deadline ? new Date(dto.deadline) : fiche.deadline }
+          : fiche
+      )
+    );
   }
 
   deleteFiche(id: number) {

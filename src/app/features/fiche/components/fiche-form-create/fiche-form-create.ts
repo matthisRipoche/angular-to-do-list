@@ -17,7 +17,7 @@ export class FicheFormCreate {
 
   afterSubmit = output<void>();
 
-  ficheForm = this.fb.group({
+  ficheFormCreate = this.fb.group({
     title: ['', [Validators.required]],
     deadline: [new Date().toISOString().split('T')[0]],
     status: ['todo' as FicheStatus],
@@ -25,12 +25,12 @@ export class FicheFormCreate {
   });
 
   onSubmit() {
-    if (this.ficheForm.invalid) return;
+    if (this.ficheFormCreate.invalid) return;
 
-    this.ficheService.createFiche(this.ficheForm.getRawValue());
+    this.ficheService.createFiche(this.ficheFormCreate.getRawValue());
 
     this.afterSubmit.emit();
-    this.ficheForm.reset({
+    this.ficheFormCreate.reset({
       deadline: new Date().toISOString().split('T')[0],
       status: 'todo'
     });

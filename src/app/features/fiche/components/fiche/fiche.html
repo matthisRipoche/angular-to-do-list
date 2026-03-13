@@ -4,5 +4,5 @@
 <p>{{fiche().description}}</p>
 <div class="btns-container">
     <button class="btn-fiche" (click)="ficheService.deleteFiche(fiche().id)">Supprimer</button>
-    <button class="btn-fiche">Modifier</button>
+    <button class="btn-fiche" (click)="toggleModalEdit()">Modifier</button>
 </div>
