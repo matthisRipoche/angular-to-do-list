@@ -1,6 +1,6 @@
 export type FicheStatus = 'todo' | 'in-progress' | 'done';
 
-export interface FicheInterface {
+export interface Fiche {
     id: number;
     title: string;
     status: FicheStatus;
@@ -10,7 +10,7 @@ export interface FicheInterface {
 
 export interface CreateFicheDto {
     title: string;
+    status?: FicheStatus;
     deadline: string;
     description: string;
-    status?: FicheStatus;
 }

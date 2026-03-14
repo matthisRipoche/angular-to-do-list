@@ -1,11 +1,11 @@
 import { Injectable, signal } from '@angular/core';
-import { FicheInterface, CreateFicheDto } from '../interfaces/fiche.interface';
+import { Fiche, CreateFicheDto } from '../models/fiche.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FicheService {
-  private _listFiche = signal<FicheInterface[]>([
+  private _listFiche = signal<Fiche[]>([
     {
       id: 1,
       title: 'Titre de la fiche',
@@ -17,14 +17,14 @@ export class FicheService {
 
   isModalCreateOpen = signal(false);
   isModalEditOpen = signal(false);
-  ficheToEdit = signal<FicheInterface | null>(null);
+  ficheToEdit = signal<Fiche | null>(null);
 
   listeFiche = this._listFiche.asReadonly();
 
   constructor() { }
 
   createFiche(dto: CreateFicheDto) {
-    const nouvelleFiche: FicheInterface = {
+    const nouvelleFiche: Fiche = {
       ...dto,
       status: dto.status || 'todo',
       id: Date.now(),
@@ -34,11 +34,11 @@ export class FicheService {
     this.addFiche(nouvelleFiche);
   }
 
-  addFiche(fiche: FicheInterface) {
+  addFiche(fiche: Fiche) {
     this._listFiche.update((list) => [...list, fiche]);
   }
 
-  openEditModal(fiche: FicheInterface) {
+  openEditModal(fiche: Fiche) {
     this.ficheToEdit.set(fiche);
     this.isModalEditOpen.set(true);
   }

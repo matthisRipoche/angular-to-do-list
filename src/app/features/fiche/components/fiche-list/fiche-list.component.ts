@@ -1,17 +1,17 @@
 import { Component, inject, computed } from '@angular/core';
 
-import { Fiche } from '../fiche/fiche';
+import { FicheComponent } from '../fiche/fiche.component';
 import { FicheService } from '../../services/fiche.service';
-import { FicheFormCreate } from '../fiche-form-create/fiche-form-create';
-import { FicheFormEdit } from '../fiche-form-edit/fiche-form-edit';
+import { FicheFormCreateComponent } from '../fiche-form-create/fiche-form-create.component';
+import { FicheFormEditComponent } from '../fiche-form-edit/fiche-form-edit.component';
 
 @Component({
-  selector: 'app-list-fiche',
-  imports: [Fiche, FicheFormCreate, FicheFormEdit],
-  templateUrl: './list-fiche.html',
-  styleUrl: './list-fiche.scss',
+  selector: 'app-fiche-list',
+  imports: [FicheComponent, FicheFormCreateComponent, FicheFormEditComponent],
+  templateUrl: './fiche-list.component.html',
+  styleUrl: './fiche-list.component.scss',
 })
-export class ListFiche {
+export class FicheListComponent {
   private ficheService = inject(FicheService);
   listeFiche = this.ficheService.listeFiche;
 

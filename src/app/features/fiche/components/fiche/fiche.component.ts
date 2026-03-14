@@ -1,18 +1,18 @@
 import { Component, inject, input } from '@angular/core';
 
-import { FicheInterface, FicheStatus } from '../../interfaces/fiche.interface';
+import { Fiche, FicheStatus } from '../../models/fiche.model';
 import { FicheService } from '../../services/fiche.service';
 
 @Component({
   selector: 'app-fiche',
   imports: [],
-  templateUrl: './fiche.html',
-  styleUrl: './fiche.scss',
+  templateUrl: './fiche.component.html',
+  styleUrl: './fiche.component.scss',
 })
-export class Fiche {
+export class FicheComponent {
   ficheService = inject(FicheService);
 
-  fiche = input<FicheInterface>({
+  fiche = input<Fiche>({
     id: 0,
     title: '',
     status: 'todo' as FicheStatus,

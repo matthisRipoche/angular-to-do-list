@@ -2,15 +2,15 @@ import { Component, output } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { inject } from '@angular/core';
 import { FicheService } from '../../services/fiche.service';
-import { FicheStatus } from '../../interfaces/fiche.interface';
+import { FicheStatus } from '../../models/fiche.model';
 
 @Component({
   selector: 'app-fiche-form-create',
   imports: [ReactiveFormsModule],
-  templateUrl: './fiche-form-create.html',
-  styleUrl: './fiche-form-create.scss',
+  templateUrl: './fiche-form-create.component.html',
+  styleUrl: './fiche-form-create.component.scss',
 })
-export class FicheFormCreate {
+export class FicheFormCreateComponent {
   private fb = inject(NonNullableFormBuilder);
 
   private ficheService = inject(FicheService);
